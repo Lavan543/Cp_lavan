@@ -1,0 +1,31 @@
+#EVALUATE REVERSE POLISH NOTATION
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        stack=[]
+        res=0
+        for element in tokens:
+            match(element):
+                case'+':
+                    op2=int(float(stack.pop()))
+                    op1=int(float(stack.pop()))
+                    res=op1+op2
+                    stack.append(str(res))
+                case'-':
+                    op2=int(float(stack.pop()))
+                    op1=int(float(stack.pop()))
+                    res=op1-op2
+                    stack.append(str(res))
+                case'*':
+                    op2=int(float(stack.pop()))
+                    op1=int(float(stack.pop()))
+                    res=op1*op2
+                    stack.append(str(res))
+                case'/':
+                    op2=int(float(stack.pop()))
+                    op1=int(float(stack.pop()))
+                    res=op1/op2
+                    stack.append(str(res))
+                case _:
+                    stack.append(element)
+        return int(float(stack.pop()))
+        
